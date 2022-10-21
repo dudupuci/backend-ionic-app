@@ -11,11 +11,11 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-@Table(name = "product")
+@Table(name = "tb_product")
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -26,8 +26,7 @@ public class Product implements Serializable {
     private String name;
     @Column(name = "price")
     private Double price;
-
+    @Transient
     private List<Category> category = new ArrayList<>();
-
 
 }

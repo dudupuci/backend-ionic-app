@@ -14,7 +14,7 @@ import java.util.List;
 @EqualsAndHashCode
 @Entity
 @ToString
-@Table(name = "category")
+@Table(name = "tb_category")
 public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -24,6 +24,7 @@ public class Category implements Serializable {
     @Column(name = "category_name")
     private String name;
     // join table e column
+    @Transient
     private List<Product> productsList = new ArrayList<>();
 
 

@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-@Table(name = "costumer")
+@Table(name = "tb_costumer")
 public class Customer {
 
     @Id
@@ -28,7 +28,7 @@ public class Customer {
     private String cpfOrCnpj;
 
     private CustomerType type;
-
+    @Transient
     private List<Order> orderList = new ArrayList<>();
 
 

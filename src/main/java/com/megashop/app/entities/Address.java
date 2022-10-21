@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-@Table(name = "address")
+@Table(name = "tb_address")
 public class Address {
 
     @Id

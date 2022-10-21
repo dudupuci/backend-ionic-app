@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-@Table(name = "order")
+@Table(name = "tb_order")
 public class Order {
 
     @Id
@@ -26,5 +26,6 @@ public class Order {
     @OneToOne
     @JoinColumn(name = "costumer_id")
     private Customer costumer;
+    @Transient
     private List<Product> list = new ArrayList<>();
 }

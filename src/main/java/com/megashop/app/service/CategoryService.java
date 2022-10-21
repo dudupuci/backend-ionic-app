@@ -17,9 +17,8 @@ public class CategoryService {
     @Autowired
     CategoryRepository repository;
 
-    public List<Category> findAll(List<Category> list) {
-        list = repository.findAll();
-        return list;
+    public List<Category> findAll() {
+       return repository.findAll();
     }
 
     public Category findById(Integer id) {

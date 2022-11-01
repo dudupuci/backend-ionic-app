@@ -1,6 +1,8 @@
 package com.megashop.app.service;
 
 import com.megashop.app.entities.Category;
+import com.megashop.app.exceptions.ObjectCannotBeCreatedException;
+import com.megashop.app.exceptions.ObjectNotFoundException;
 import com.megashop.app.repository.CategoryRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -18,12 +20,12 @@ public class CategoryService {
     CategoryRepository repository;
 
     public List<Category> findAll() {
-       return repository.findAll();
+        return repository.findAll();
     }
 
     public Category findById(Integer id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Error trying to find ID: " + id));
+                .orElseThrow(() -> new ObjectNotFoundException("Error trying to find ID: " + id + " Type: " + Category.class.getName()));
 
     }
 
@@ -31,7 +33,7 @@ public class CategoryService {
         try {
             return repository.save(category);
         } catch (Exception err) {
-            throw new RuntimeException("Error: "+ err.getMessage());
+            throw new ObjectCannotBeCreatedException("Error trying to create object: " +category.getName() + " Type: "+Category.class.getName());
         }
     }
 
@@ -47,7 +49,7 @@ public class CategoryService {
             updateCategory(newC, oldC);
             return repository.save(newC);
         } catch (Exception err) {
-            throw new RuntimeException("Error: "+ err.getMessage());
+            throw new RuntimeException("Error: " + err.getMessage());
         }
     }
 
@@ -58,7 +60,6 @@ public class CategoryService {
     public void deleteAll(List<Category> list) {
         repository.deleteAll(list);
     }
-
 
 
 }

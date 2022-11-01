@@ -1,6 +1,6 @@
 package com.megashop.app.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -8,26 +8,29 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
 @ToString
-@Table(name = "tb_category")
-public class Category implements Serializable {
+@Table(name = "tb_state")
+public class State implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    public State(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "category_name")
+    @Column(name = "state_name")
     private String name;
 
-    @JsonManagedReference
-    @ManyToMany(mappedBy = "categories")
-    private List<Product> productsList = new ArrayList<>();
-
-
+    @OneToMany(mappedBy = "state")
+    @JsonIgnore
+    private List<City> cities = new ArrayList<>();
 }

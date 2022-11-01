@@ -40,7 +40,7 @@ public class ProductService {
 
     public Product updateProduct(Product newP, Product oldP) {
         oldP.setName(newP.getName());
-        oldP.setCategory(newP.getCategory());
+        oldP.setCategories(newP.getCategories());
         oldP.setPrice(newP.getPrice());
         return newP;
     }

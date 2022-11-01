@@ -1,8 +1,10 @@
 package com.megashop.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Getter
@@ -12,7 +14,8 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @ToString
 @Table(name = "tb_address")
-public class Address {
+public class Address implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,5 +32,10 @@ public class Address {
     private String cep;
 
     @OneToOne
+    @JoinColumn(name = "city_id")
+    private City city;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    @JsonIgnore
     private Customer customer;
 }

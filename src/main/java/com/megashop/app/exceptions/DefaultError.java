@@ -19,4 +19,5 @@ public class DefaultError implements Serializable {
     private Long timeStamp;
 
 
+
 }
